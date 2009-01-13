@@ -4,3 +4,8 @@ port: '6667'
 nick: 'notif'
 realname: 'Simple notification bot'
 channel: '#NotifBot-test'
+
+# Configuration for SimpleRss plugin
+SimpleRss:
+        urls:
+        - "http://www.raippa.fi/RecentChanges?action=rss_rc&unique=1"
