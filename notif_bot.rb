@@ -24,9 +24,8 @@ class NotifBot < Net::IRC::Client
     # This may be network dependant but at least in IRCnet End of MOTD
     # is command 376.
     #if (/End of MOTD/.match(m) and (@joined_channels == []))
-    if (m.command == '376') and (@joined_channels == [])
+    if (m.command == '376')
       post JOIN, @config['channel']
-      @joined_channels << @config['channel']
     else
     end
   end
