@@ -19,6 +19,13 @@ class NotifBot < Net::IRC::Client
           })
   end
 
+  def initialize_plugins
+    # open plugins dir
+    # loop files inside, and require them
+    # @config contains configuration for each plugin named with plugin classname
+    # initialize each plugin with config data
+  end
+
   def on_message(m)
     super
     # This may be network dependant but at least in IRCnet End of MOTD
