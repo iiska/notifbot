@@ -2,6 +2,17 @@
 require 'open-uri'
 require 'rss'
 
+# TODO: Subscription handling
+# !subscribe feed-url command
+#
+# adds new subscription so that SimpleRSS notifies
+# target channel or user when new items are added to
+# the feed.
+# If command is given on the channel then target is
+# that channel, otherwise target is the user
+#
+# !unsubscribe
+
 class SimpleRss < Plugin
   def initialize(bot, config)
     @bot = bot;
@@ -21,5 +32,11 @@ class SimpleRss < Plugin
         }
         sleep(60)
       end
+    }
+  end
+
+  def on_help()
+    # Prints usage info. NotifBot calls this
+    # when !help is called.
   end
 end
