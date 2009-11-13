@@ -21,7 +21,7 @@ class SimpleRss < Plugin
 
     # Main thread of the rss reader, which polls given url
     config['urls'].each{|u|
-      @threads.push Thread.new(@bot, u) do |bot, url|
+      @threads << Thread.new(@bot, u) do |bot, url|
 
         open(url) {|f|
           feed = RSS::Parser.parse(f.read, false)

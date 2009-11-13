@@ -4,6 +4,8 @@ port: '6667'
 nick: 'notif'
 realname: 'Simple notification bot'
 channel: '#NotifBot-test'
+active_plugins:
+        - "plugins/simple_rss.rb"
 
 # Configuration for SimpleRss plugin
 SimpleRss:
