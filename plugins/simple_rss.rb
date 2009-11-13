@@ -35,8 +35,20 @@ class SimpleRss < Plugin
     }
   end
 
+  def handlers()
+    {"!subscribe" => :on_subscribe,
+      "!unsubscribe" => :on_unsubscribe}
+  end
+
   def on_help()
     # Prints usage info. NotifBot calls this
     # when !help is called.
   end
+
+  def on_subscribe
+  end
+
+  def on_unsubscribe
+  end
+
 end
