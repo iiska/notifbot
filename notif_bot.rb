@@ -6,9 +6,17 @@ require 'yaml'
 
 require 'plugin'
 
+module NotifBotConstants
+  # This may be network dependant but at least in IRCnet End of MOTD
+  # is command 376.
+  EOMOTD = 376
+end
+
 # Parse a few random irc log files from the directories given
 # as command line parameters.
 class NotifBot < Net::IRC::Client
+  include NotifBotConstants
+
   def initialize(config_file)
     @config = YAML::load(File.open(config_file))
 
@@ -28,10 +36,7 @@ class NotifBot < Net::IRC::Client
 
   def on_message(m)
     super
-    # This may be network dependant but at least in IRCnet End of MOTD
-    # is command 376.
-    #if (/End of MOTD/.match(m) and (@joined_channels == []))
-    if (m.command == '376')
+    if (m.command == EOMOTD)
       post JOIN, @config['channel']
     else
     end
