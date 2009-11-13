@@ -36,16 +36,22 @@ class NotifBot < Net::IRC::Client
     else
     end
   end
+
+  def on_help()
+    # answers to !help
+  end
 end
 
-config_file = ['./config.yml',
-               './notifbotrc',
-               '~/.notifbotrc'].select{|f|
-  f && File.file?(f)
-}.first
+if __FILE__ == $0
+  config_file = ['./config.yml',
+                 './notifbotrc',
+                 '~/.notifbotrc'].select{|f|
+    f && File.file?(f)
+  }.first
 
-if config_file
-  NotifBot.new(config_file).start
-else
-  puts "No config file found."
+  if config_file
+    NotifBot.new(config_file).start
+  else
+    puts "No config file found."
+  end
 end
